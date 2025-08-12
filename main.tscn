@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://dxr3vqyc2j1v0"]
+[gd_scene load_steps=5 format=4 uid="uid://dxr3vqyc2j1v0"]
 
-[ext_resource type="Texture2D" uid="uid://cfske0evusbja" path="res://icon.svg" id="1_ttqfj"]
-[ext_resource type="Texture2D" uid="uid://cre25vg1bohn6" path="res://tilemap.png" id="2_34r86"]
-[ext_resource type="Script" path="res://player.gd" id="2_41kvi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgcee"]
-size = Vector2(128, 129)
+[ext_resource type="PackedScene" uid="uid://wayfckhojfsg" path="res://player/player.tscn" id="1_k82ti"]
+[ext_resource type="Texture2D" uid="uid://cre25vg1bohn6" path="res://assets/tilemap.png" id="2_34r86"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wr6j0"]
 texture = ExtResource("2_34r86")
@@ -22,19 +18,8 @@ sources/0 = SubResource("TileSetAtlasSource_wr6j0")
 [node name="World" type="Node2D"]
 position = Vector2(594, 221)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-39.7262, 24.4608)
-collision_layer = 2
-script = ExtResource("2_41kvi")
-GRAVITY = 300.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_ttqfj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_cgcee")
+[node name="Player" parent="." instance=ExtResource("1_k82ti")]
+position = Vector2(-32, 34)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD4/wMAAAACAAAAAAD5/wMAAAACAAAAAAD6/wMAAAACAAAAAAD7/wMAAAACAAAAAAD8/wMAAAACAAAAAAD9/wMAAAACAAAAAAD+/wMAAAACAAAAAAD//wMAAAACAAAAAAAAAAMAAAACAAAAAAABAAMAAAACAAAAAAD3/wQAAAACAAAAAAD2/wQAAAACAAAAAAD1/wQAAAACAAAAAAD0/wQAAAACAAAAAAACAAQAAAACAAAAAAADAAQAAAACAAAAAADz/wMAAAACAAAAAADz/wIAAAACAAAAAADy/wIAAAACAAAAAADy/wEAAAACAAAAAADx/wAAAAACAAAAAADw/wAAAAACAAAAAADw////AAACAAAAAAAEAAMAAAACAAAAAAAFAAMAAAACAAAAAAAGAAIAAAACAAAAAAAGAAEAAAACAAAAAAAHAAEAAAACAAAAAAAHAAAAAAACAAAAAAAEAAAAAAACAAAAAAADAAAAAAACAAAAAAACAAAAAAACAAAAAAD/////AAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAD9//7/AAACAAAAAAD8//7/AAACAAAAAAD3//7/AAACAAAAAAD2//7/AAACAAAAAAD1//7/AAACAAAAAADv////AAACAAAAAADu////AAACAAAAAADt////AAACAAAAAADs////AAACAAAAAADr////AAACAAAAAADq////AAACAAAAAADp////AAACAAAAAADo////AAACAAAAAADn////AAACAAAAAADr//z/AAACAAAAAADs//z/AAACAAAAAADt//z/AAACAAAAAADw//r/AAACAAAAAADx//r/AAACAAAAAAD0//n/AAACAAAAAAD1//n/AAACAAAAAAD2//n/AAACAAAAAAD6//n/AAACAAAAAAD7//n/AAACAAAAAAD8//n/AAACAAAAAAABAPn/AAACAAAAAAACAPn/AAACAAAAAAAFAP3/AAACAAAAAAAGAP3/AAACAAAAAADm////AAACAAAAAADl////AAACAAAAAADk////AAACAAAAAADm//3/AAACAAAAAADn//3/AAACAAAAAAA=")

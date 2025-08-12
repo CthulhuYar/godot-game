@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Character
 
 @export var FRICTION: float = 0.15
 @export var GRAVITY: float = 500
