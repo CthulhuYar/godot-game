@@ -20,11 +20,20 @@ func _get_transition() -> int:
 		states.idle:
 			if parent.velocity.length() > 10:
 				return states.walk
+			if parent.velocity.y < 0:
+				return states.jump
 		states.walk:
 			if parent.velocity.length() < 10:
 				return states.idle
-		states.hurt:
-			if not animation_player.is_playing():
+			if parent.velocity.y < 0:
+				return states.jump
+			if parent.velocity.y > 0:
+				return states.fall
+		states.jump:
+			if parent.velocity.y > 0:
+				return states.fall
+		states.fall:
+			if parent.is_on_floor():
 				return states.idle
 	return -1
 	
