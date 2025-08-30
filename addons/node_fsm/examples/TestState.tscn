@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://hgkauaflpfqi"]
+
+[ext_resource type="Script" path="res://addons/node_fsm/core/state.gd" id="1_nte0s"]
+[ext_resource type="Script" path="res://addons/node_fsm/core/transition.gd" id="2_2lw51"]
+[ext_resource type="Script" path="res://addons/node_fsm/conditions/timer_condition.gd" id="3_coge5"]
+
+[sub_resource type="Resource" id="Resource_j5jdc"]
+script = ExtResource("3_coge5")
+duration = 0.2
+
+[sub_resource type="Resource" id="Resource_x41pu"]
+script = ExtResource("2_2lw51")
+target = NodePath("Idle")
+condition = SubResource("Resource_j5jdc")
+
+[node name="TestState" type="Node"]
+script = ExtResource("1_nte0s")
+transitions = Array[ExtResource("2_2lw51")]([SubResource("Resource_x41pu")])
+
+[node name="Idle" type="Node" parent="."]
